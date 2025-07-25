@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= fname %> <%= lname %> - Resume</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: 'Nunito Sans', sans-serif; }
+  </style>
+</head>
+<body class="bg-gray-100 p-6 ">
+  <div class="max-w-4xl mx-auto bg-white shadow-lg p-10 rounded-lg">
+    <!-- Header with Image -->
+    <div class="flex items-center gap-6 border-b pb-6">
+      <img src="<%= imageURL || 'https://via.placeholder.com/120' %>" alt="" class="w-28 h-28 rounded-full object-cover border">
+      <div>
+        <h1 class="text-3xl font-bold"><%= fname %> <%= lname %></h1>
+        <p class="text-gray-500"><%= perscity %>, <%= perscountry %> - <%= email %> - <%= phoneno %></p>
+      </div>
+    </div>
+
+    <!-- Summary -->
+    <% if (summary) { %>
+    <div class="mt-6">
+      <h2 class="text-xl font-semibold text-blue-600 mb-2">Professional Summary</h2>
+      <p class="text-gray-700"><%- summary %></p>
+    </div>
+    <% } %>
+
+    <!-- Skills -->
+    <% if (skills && skills.length > 0) { %>
+    <div class="mt-6">
+      <h2 class="text-xl font-semibold text-blue-600 mb-2">Skills</h2>
+      <div class="flex flex-wrap gap-2">
+        <% skills.forEach(skill => { %>
+          <span class="bg-gray-200 text-gray-800 px-3 py-1 rounded-full text-sm font-medium"><%= skill %></span>
+        <% }) %>
+      </div>
+      
+    </div>
+    <% } %>
+
+    <!-- Experience -->
+    <% if (experience && experience.length > 0) { %>
+    <div class="mt-6">
+      <h2 class="text-xl font-semibold text-blue-600 mb-2">Experience</h2>
+      <% experience.forEach((exp, index) => { %>
+        <div class="mb-4">
+          <p class="font-bold"><%= exp.jobtitle %> - <%= exp.employer %></p>
+          <p class="text-sm text-gray-500"><%= exp.city %>, <%= exp.country %> | <%= exp.startdate %> - <%= exp.enddate %></p>
+        </div>
+      <% }) %>
+    </div>
+    <% } %>
+
+    <!-- Education -->
+    <% if (education && education.length > 0) { %>
+    <div class="mt-6">
+      <h2 class="text-xl font-semibold text-blue-600 mb-2">Education</h2>
+      <% education.forEach(edu => { %>
+        <div class="mb-4">
+          <p class="font-bold"><%= edu.degree %> - <%= edu.schoolname %></p>
+          <p class="text-sm text-gray-500"><%= edu.schoollocation %> | <%= edu.edustartdate %> - <%= edu.eduenddate %></p>
+          <p class="text-gray-700"><%- edu.edusummary %></p>
+        </div>
+      <% }) %>
+    </div>
+    <% } %>
+
+    <!-- Courses -->
+    <% if (courses && courses.length > 0) { %>
+      <div class="mt-6">
+        <h2 class="text-xl font-semibold text-blue-600 mb-2">Courses</h2>
+        <% courses.forEach(course => { %>
+          <p class="font-bold"><%= course.coursename %> - <%= course.courseinstitution %></p>
+          <p class="text-sm text-gray-500"><%= course.coursestartDate %> - <%= course.courseendDate %></p>
+        <% }) %>
+      </div>
+    <% } %>
+    
+
+    <!-- Internships -->
+    <% if (internships && internships.length > 0) { %>
+      <div class="mt-6">
+        <h2 class="text-xl font-semibold text-blue-600 mb-2">Internships</h2>
+        <% internships.forEach(intern => { %>
+          <p class="font-bold"><%= intern.jobTitle %> - <%= intern.recruiter %></p>
+          <p class="text-sm text-gray-500"><%= intern.startDate %> - <%= intern.endDate %></p>
+          <p class="text-gray-700"><%- intern.description %></p>
+        <% }) %>
+      </div>
+    <% } %>
+    
+
+    <!-- Languages -->
+    <% if (languages && languages.length > 0) { %>
+    <div class="mt-6">
+      <h2 class="text-xl font-semibold text-blue-600 mb-2">Languages</h2>
+      <ul class="list-disc pl-6 text-gray-700">
+        <% languages.forEach(lang => { %>
+          <li><%= lang.name %> - <%= lang.level %></li>
+        <% }) %>
+      </ul>
+      
+    </div>
+    <% } %>
+
+    <!-- Hobbies -->
+    <% if (hobbies && hobbies.trim() !== '') { %>
+      <div class="mt-6">
+        <h2 class="text-xl font-semibold text-blue-600 mb-2">Hobbies</h2>
+        <p class="text-gray-700"><%- hobbies %></p>
+      </div>
+    <% } %>
+    
+  </div>
+</body>
+</html>
+
+

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resume Preview</title>
+  
+  <!-- ✅ Correct TailwindCSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+
+<body class="bg-gray-100 min-h-screen flex items-center justify-center p-6">
+
+  <!-- Resume Container -->
+  <div class="bg-white rounded-lg shadow-lg overflow-hidden max-w-6xl w-full flex flex-col md:flex-row">
+
+    <!-- Sidebar (Skills + Languages) -->
+    <aside class="bg-gray-200 p-6 md:w-1/3 w-full">
+      <!-- Skills -->
+      <div class="skills mb-6">
+        <h2 class="text-xl font-bold mb-2">Skills</h2>
+        <% if (Array.isArray(skills) && skills.length > 0) { %>
+          <div class="flex flex-wrap gap-2">
+            <% skills.forEach(skill => { %>
+              <span class="bg-white  text-gray-800 px-3 py-1 rounded-full text-xs font-medium"><%= skill %></span>
+            <% }) %>
+          </div>
+        <% } else { %>
+          <p class="text-gray-500 text-sm">No skills added.</p>
+        <% } %>
+      </div>
+      
+
+      <div>
+        <h2 class="text-xl font-bold mb-4 mt-5 ">Languages</h2>
+        <% if (languages && languages.length > 0) { %>
+          <ul class="list-disc list-inside text-gray-700 space-y-1">
+            <% languages.forEach(lang => { %>
+              <li><%= lang.name %> - <%= lang.level %></li>
+            <% }); %>
+          </ul>
+        <% } else { %>
+          <!-- <p class="text-gray-500 text-sm">No languages added.</p> -->
+        <% } %>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="p-8 flex-1 flex flex-col space-y-8">
+
+      <!-- Header -->
+      <section class="border-b pb-4">
+        <h1 class="text-3xl font-bold text-gray-800"><%= fname || '' %> <%= lname || '' %></h1>
+        <p class="text-gray-600 mt-1"><%= perscity || '' %>, <%= perscountry || '' %>, <%= pincode || '' %></p>
+        <p class="text-gray-600"><%= phoneno || '' %> | <%= email || '' %></p>
+      </section>
+
+      <!-- Profile Section -->
+      <section>
+        <h2 class="text-2xl font-bold mb-2 text-gray-800">Profile</h2>
+        <% if (typeof summary === 'string' && summary.trim() !== '') { %>
+          <p class="text-black "><%- summary %></p>
+        <% } else { %>
+          <div class="h-24  rounded-md"></div>
+        <% } %>
+        
+      </section>
+
+      <!-- Employment History Section -->
+      <% if (Array.isArray(experience) && experience.length > 0) { %>
+        <section>
+          <h2 class="text-2xl font-bold mb-2 text-gray-800">Employment History</h2>
+          <% experience.forEach(exp => { %>
+            <div class="mb-4">
+              <p class="text-lg font-semibold text-gray-800"><%= exp.jobtitle %> at <%= exp.employer %></p>
+              <p class="text-gray-600 text-sm"><%= exp.city %>, <%= exp.country %></p>
+              <p class="text-gray-600 text-sm"><%= exp.startdate %> — <%= exp.enddate %></p>
+            </div>
+          <% }) %>
+        </section>
+      <% } %>
+      
+
+      <!-- Education Section -->
+      <% if (Array.isArray(education) && education.length > 0) { %>
+        <section>
+          <h2 class="text-2xl font-bold mb-2 text-gray-800">Education</h2>
+          <% education.forEach(edu => { %>
+            <div class="mb-4">
+              <p class="text-lg font-semibold text-gray-800"><%= edu.degree %></p>
+              <p class="text-gray-600"><%= edu.schoolname %>, <%= edu.schoollocation %></p>
+              <p class="text-gray-600 text-sm"><%= edu.edustartdate %> — <%= edu.eduenddate %></p>
+              <% if (edu.edusummary && edu.edusummary.trim() !== '') { %>
+                <p class="text-black mt-2"><%- edu.edusummary %></p>
+              <% } %>
+            </div>
+          <% }); %>
+        </section>
+      <% } %>
+      
+      <!-- Add this inside your <main> tag (after Education section) -->
+
+<!-- Courses Section -->
+<% if (Array.isArray(courses) && courses.length > 0) { %>
+  <section>
+    <h2 class="text-2xl font-bold mb-2 text-gray-800">Courses</h2>
+    <% courses.forEach(course => { %>
+      <div class="mb-4">
+        <p class="font-semibold text-gray-800"><%= course.coursename %></p>
+        <p class=""><%= course.courseinstitution %></p>
+        <p class=""><%= course.coursestartDate %> — <%= course.courseendDate %></p>
+        
+      </div>
+    <% }) %>
+  </section>
+<% } %>
+
+
+<!-- Internships Section -->
+<% if (Array.isArray(internships) && internships.length > 0) { %>
+  <section>
+    <h2 class="text-2xl font-bold mb-2 text-gray-800">Internships</h2>
+    <% internships.forEach(intern => { %>
+      <div class="mb-4">
+        <p class="text-lg font-semibold text-gray-800"><%= intern.jobTitle %> at <%= intern.recruiter %></p>
+        <p class="text-gray-600 text-sm"><%= intern.city %></p>
+        <p class="text-gray-600 text-sm"><%= intern.startDate %> — <%= intern.endDate %></p>
+        <% if (intern.description && intern.description.trim() !== '') { %>
+          <p class="text-black mt-1"><%- intern.description %></p>
+        <% } %>
+      </div>
+    <% }) %>
+  </section>
+<% } %>
+
+
+
+<!-- Hobbies Section -->
+<% if (typeof hobbies === 'string' && hobbies.trim() !== '') { %>
+  <section>
+    <h2 class="text-2xl font-bold mb-2 text-gray-800">Hobbies</h2>
+    <p class="text-black"><%- hobbies %></p>
+  </section>
+<% } %>
+
+
+    </main>
+
+  </div>
+
+</body>
+</html>
+
