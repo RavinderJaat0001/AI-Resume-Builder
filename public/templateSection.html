@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Template Selection</title>
+    <link rel="stylesheet" href="output.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<style>
+    .tempCont{
+        background: #2d98c2;
+background: linear-gradient(90deg, rgba(45, 152, 194, 1) 3%, rgba(169, 148, 255, 1) 50%, rgba(83, 160, 237, 1) 99%);
+    }
+</style>
+<body>
+    <nav class="fixed w-[100%] z-[1000] shadow top-0 bg-white flex items-center justify-between ">
+
+        <div class="logo  text-[50px] font-bold m ml-[130px] ">Resu<span class="text-orange-400">Mate</span></div>
+        <ul class="flex justify-center items-center gap-[50px] text-[16px]  m mr-[150px] ">
+            <li class=" faq cursor-pointer hover:text-orange-400">FAQs</li>
+        </ul>
+       
+    </nav>
+      
+    <div class="text-cont flex flex-col items-center justify-center gap-[10px]">
+    <div class=" text-[32px] font-bold m mt-[100px]">Choose from our resume templates</div>
+    <p class="text-[16px] text-gray-500 font-medium">Your resume, your way — pick a template to get started.</p>
+    <p class="text-[16px] text-gray-500 font-medium">You can always change your templates later</p>
+    </div>
+
+    <div class="tempCont w-[100%] h-auto border  mx-auto my-[100px] flex flex-wrap justify-center items-center gap-[30px] p-10">
+
+        <div class="template w-[260px] h-[320px]  cursor-pointer hover:scale-105 hover:border-4 transition duration-300 ease-in-out">
+            <img class=" w-[260px] h-[320px]" src="assets/templates/thumbnails/Template 1.png" alt="">
+        </div>
+        <div class="template w-[260px] h-[320px]  cursor-pointer hover:scale-105 hover:border-2 transition duration-300 ease-in-out">
+            <img class=" w-[260px] h-[320px]" src="assets/templates/thumbnails/Template 2.png" alt="">
+        </div>
+        <div class="template w-[260px] h-[320px]  cursor-pointer hover:scale-105 hover:border-2 transition duration-300 ease-in-out">
+            <img class=" w-[260px] h-[320px]" src="assets/templates/thumbnails/Template 3.png" alt="">
+        </div>
+        <div class="template w-[260px] h-[320px]  cursor-pointer hover:scale-105 hover:border-2 transition duration-300 ease-in-out">
+        <img class=" w-[260px] h-[320px]" src="assets/templates/thumbnails/Template 4.png" alt="">
+    </div>
+        <div class="template w-[260px] h-[320px]  cursor-pointer hover:scale-105 hover:border-2 transition duration-300 ease-in-out">
+        <img class=" w-[260px] h-[320px] " src="assets/templates/thumbnails/Template 5.png" alt="">
+    </div>
+        <div class="template w-[260px] h-[320px]  cursor-pointer hover:scale-105 hover:border-2 transition duration-300 ease-in-out">
+        <img class=" w-[260px] h-[320px]" src="assets/templates/thumbnails/Template 6.png" alt="">
+    </div>
+    </div>
+
+    <footer id="footer" class="bg-black w-[100%]  flex flex-col gap-[25px] text-white shadow-lg ">
+        <div class="logo2 text-center  ">
+        <h1 class="text-[50px] font-bold">ResuMate</h1>
+        </div>
+   
+        <div class="Links cursor-pointer">
+         <ul class="flex justify-center gap-[15px]">
+           <li class=" l1 hover:underline">Resume Templates</li>
+           <li>|</li>
+           <li class="l2 hover:underline">FAQs</li>
+           <li>|</li>
+           <li class="l3 hover:underline">Create my resume</li>
+         </ul>
+        </div>
+        <div class="links flex justify-center items-center gap-[20px] ">
+         <img class="cursor-pointer" src="public/assets/SVGs/linkedin.svg" alt="">
+         <img class="cursor-pointer" src="public/assets/SVGs/facebook.svg" alt="">
+         <img class="cursor-pointer" src="public/assets/SVGs/instagram.svg" alt="">
+        </div>
+       </footer> 
+</body>
+<script>
+    let faq=document.querySelector(".faq");
+
+faq.addEventListener("click",()=>{
+    window.location.href="FAQ.html";
+})
+
+document.querySelectorAll('.template').forEach((template, index) => {
+    template.addEventListener('click', () => {
+        const templates = [
+            'template1',
+            'template2', // Add template2 to the array
+            'template3',
+            'template4',
+            'template5',
+            'template6'
+        ];
+        localStorage.setItem('selectedTemplate', templates[index]);
+        window.location.href = 'editor.html';
+    });
+});
+
+</script>
+</html>
+

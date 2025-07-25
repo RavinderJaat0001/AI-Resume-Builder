@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Resume Builder Project</title>
+    <link rel="stylesheet" href="style.css" />
+    <!-- <link rel="stylesheet" href="output.css"> -->
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body >
+    <nav class="fixed bg-white w-[100%] z-[1000]">
+      <ul class="flex justify-around items-center gap-[70px]">
+        <li class="logo w-50">Resu<span class="text-orange-400">Mate</span></li>
+        
+        <li
+          class="faq cursor-pointer hover:text-orange-400 hover:underline font-[Bitter]"
+        >
+          FAQs
+        </li>
+       
+        <li>
+          <button id="build_resume" class="nav-btn border bg-blue-400 text-white font-[Bitter]">
+            Build My Resume
+          </button>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="title-cont flex justify-around items-center h-screen">
+      <div class="text-cont w-[40vw] text-[45px] text font-[700] ">
+        Create a <span class="text-orange-400">resume</span> that secures your
+        <span class="text-orange-400">dream job</span>
+        <p class="text-[20px] font-[400]">
+          "Build a resume that piques the interest of recruiters and gets you
+          hired. It's fast and easy to use—stand out with a professional touch!"
+        </p>
+        <button
+         id="tryFreeBtn" class="w-[250px] bg-blue-400 text-white text-[18px] cursor-pointer hover:bg-[#0079ff]"
+        >
+          Try for free
+        </button>
+      </div>
+      <div class="img-cont mr-[100px]">
+        <img id="image1" src="assets/resumes/3949885.jpg" alt="" />
+        <img
+          id="image2"
+          src="assets/resumes/5195259.jpg"
+          alt=""
+          class="hidden"
+        />
+        <img
+          id="image3"
+          src="assets/resumes/9864951.jpg"
+          alt=""
+          class="hidden"
+        />
+        <img
+          id="image4"
+          src="assets/resumes/CV-Template-03.jpg"
+          alt=""
+          class="hidden"
+        />
+        <img
+          id="image5"
+          src="assets/resumes/cv_template_07.jpg"
+          alt=""
+          class="hidden"
+        />
+        <img
+          id="image6"
+          src="assets/resumes/tp188-385-mind-resume-01.jpg"
+          alt=""
+          class="hidden"
+        />
+      </div>
+    </div>
+
+    <div class="steps-cont flex flex-col gap-[15px]">
+      <p class="text-[40px] font-[700] text-center">
+        Build your <span class="text-orange-400">resume</span> in 3 steps
+      </p>
+
+      <div
+        class="step1-cont flex justify-center items-center gap-[10px] w-[42vw] h-[40vh] text-orange-400 text-[30px] font-[500]"
+      >
+        <img
+          class="w-[300px] h-[300px]"
+          src="assets/2nd-section/6144672.jpg"
+          alt=""
+        />
+        <p>1. Pick a Template</p>
+      </div>
+      <div
+        class="step2-cont flex justify-center items-center gap-[30px] w-[43vw] h-[40vh] text-orange-400 text-[30px] font-[500]"
+      >
+        <img
+          class="w-[300px] h-[300px]"
+          src="assets/2nd-section/5052521.jpg"
+          alt=""
+        />
+        <p>2. Customize your layout</p>
+      </div>
+      <div
+        class="step3-cont flex justify-center items-center gap-[30px] w-[42vw] h-[40vh] text-orange-400 text-[30px] font-[500]"
+      >
+        <img
+          class="w-[300px] h-[300px]"
+          src="assets/2nd-section/4320872-removebg-preview.png"
+          alt=""
+        />
+        <p>3. Hit 'Download'</p>
+      </div>
+    </div>
+
+    <div class="features-cont text-center text-[40px] font-[700]">
+      <h1>"Why choose our Resume Builder?"</h1>
+
+      <div class="features">
+        <div class="feature-1 flex items-center gap-[5px]">
+          <img
+            class="w-[70px] h-[70px]"
+            src="assets/features/paint-selection_3419404.png"
+            alt=""
+          />
+          <div class="feature-1-text">
+            <span class="text-[22px] text-blue-600">Easy to use editor</span>
+            <p class="text-[19px] font-[400]">
+              A simple, intuitive interface that lets you build your resume
+              effortlessly.
+            </p>
+          </div>
+        </div>
+
+        <div class="feature-2 flex items-center gap-[5px]">
+          <img
+            class="w-[70px] h-[70px]"
+            src="assets/features/ai_8131880.png"
+            alt=""
+          />
+          <div class="feature-2-text">
+            <span class="text-[22px] text-blue-600"
+              >AI-Powered Suggestions</span
+            >
+            <p class="text-[19px] font-[400]">
+              Get smart recommendations for bullet points, skills, and
+              formatting.
+            </p>
+          </div>
+        </div>
+
+        <div class="feature-3 flex items-center gap-[5px]">
+          <img
+            class="w-[70px] h-[70px]"
+            src="assets/features/cv_3603800.png"
+            alt=""
+          />
+          <div class="feature-3-text">
+            <span class="text-[22px] text-blue-600">Multiple Templates</span>
+            <p class="text-[19px] font-[400]">
+              Choose from modern, creative, and professional resume designs.
+            </p>
+          </div>
+        </div>
+
+        <div class="feature-4 flex items-center gap-[5px]">
+          <img
+            class="w-[70px] h-[70px]"
+            src="assets/features/exportation_2171478.png"
+            alt=""
+          />
+          <div class="feature-4-text">
+            <span class="text-[22px] text-blue-600"> Export Options </span>
+            <p class="text-[19px] font-[400]">
+              Download your resume in PDF or DOCX with a single click.
+            </p>
+          </div>
+        </div>
+
+        <div class="feature-5 flex items-center gap-[5px]">
+          <img
+            class="w-[70px] h-[70px]"
+            src="assets/features/seo_1055645.png"
+            alt=""
+          />
+          <div class="feature-5-text">
+            <span class="text-[22px] text-blue-600">ATS-Friendly Designs</span>
+            <p class="text-[19px] font-[400]">
+              Optimized templates to pass applicant tracking systems.
+            </p>
+          </div>
+        </div>
+
+        <div class="feature-6 flex items-center gap-[5px]">
+          <img
+            class="w-[70px] h-[70px]"
+            src="assets/features/organization_7486493.png"
+            alt=""
+          />
+          <div class="feature-6-text">
+            <span class="text-[22px] text-blue-600">Beat the competition</span>
+            <p class="text-[19px] font-[400]">
+              Our tested resume templates are designed to make you more attractive to recruiters.
+            </p>
+        
+        </div>
+      </div>
+    </div>
+              <!--                                 Sample resume templates section      -->
+
+              
+              <div class="template-cont w-[100%]    text-center text-white flex flex-col items-center gap-[50px] overflow-hidden">
+                   <div class="Text-cont w-[70%] m my-[30px] ">
+                    <span class="text-[25px] font-bold ">"Choose Your Perfect Resume Template"</span>
+                    <p class="text-[25px]">Explore our collection of professionally designed resume templates. Each template is tailored for different industries and career levels. Simply select your preferred template, customize your details, and stand out from the crowd.</p>
+                   </div>
+
+                   <div class="temp-cont w-[100%] flex  gap-[10px] border  ">
+                    <img class="w-[300px] h-[400px]" src="assets/resumes/10401521.jpg" alt="">
+                    <img class="w-[300px] h-[400px]" src="assets/resumes/10737664.jpg" alt="">
+                    <img class="w-[300px] h-[400px]" src="assets/resumes/11420130.jpg" alt="">
+                    <img class="w-[300px] h-[400px]" src="assets/resumes/3949885.jpg" alt="">
+                    <img class="w-[300px] h-[400px]" src="assets/resumes/5192108.jpg" alt="">
+                    <img class="w-[300px] h-[400px]" src="assets/resumes/4347003.jpg" alt="">
+                    <img class="w-[300px] h-[400px]" src="assets/resumes/5195259.jpg" alt="">
+                    <img class="w-[300px] h-[400px]" src="assets/resumes/9864951.jpg" alt="">
+                    <img class="w-[300px] h-[400px]" src="assets/resumes/CV-Template-03.jpg" alt="">
+                    <img class="w-[300px] h-[400px]" src="assets/resumes/CV-Template-13.jpg" alt="">
+                    <img class="w-[300px] h-[400px]" src="assets/resumes/cv_template_07.jpg" alt="">
+                    <img class="w-[300px] h-[400px]" src="assets/resumes/tp188-385-mind-resume-01.jpg" alt="">
+
+                     <!-- Duplicate the same set of images for seamless scrolling -->
+    <img class="w-[300px] h-[400px]" src="assets/resumes/10401521.jpg" alt="Resume 1">
+    <img class="w-[300px] h-[400px]" src="assets/resumes/10737664.jpg" alt="Resume 2">
+    <img class="w-[300px] h-[400px]" src="assets/resumes/11420130.jpg" alt="Resume 3">
+    <img class="w-[300px] h-[400px]" src="assets/resumes/3949885.jpg" alt="Resume 4">
+    <img class="w-[300px] h-[400px]" src="assets/resumes/5192108.jpg" alt="Resume 5">
+    <img class="w-[300px] h-[400px]" src="assets/resumes/4347003.jpg" alt="Resume 6">
+    <img class="w-[300px] h-[400px]" src="assets/resumes/5195259.jpg" alt="Resume 7">
+    <img class="w-[300px] h-[400px]" src="assets/resumes/9864951.jpg" alt="Resume 8">
+    <img class="w-[300px] h-[400px]" src="assets/resumes/CV-Template-03.jpg" alt="Resume 9">
+    <img class="w-[300px] h-[400px]" src="assets/resumes/CV-Template-13.jpg" alt="Resume 10">
+    <img class="w-[300px] h-[400px]" src="assets/resumes/cv_template_07.jpg" alt="Resume 11">
+    <img class="w-[300px] h-[400px]" src="assets/resumes/tp188-385-mind-resume-01.jpg" alt="Resume 12">
+                     <!-- Duplicate the same set of images for seamless scrolling -->
+    <img class="w-[300px] h-[400px]" src="assets/resumes/10401521.jpg" alt="Resume 1">
+    <img class="w-[300px] h-[400px]" src="assets/resumes/10737664.jpg" alt="Resume 2">
+    <img class="w-[300px] h-[400px]" src="assets/resumes/11420130.jpg" alt="Resume 3">
+    <img class="w-[300px] h-[400px]" src="assets/resumes/3949885.jpg" alt="Resume 4">
+    <img class="w-[300px] h-[400px]" src="assets/resumes/5192108.jpg" alt="Resume 5">
+    <img class="w-[300px] h-[400px]" src="assets/resumes/4347003.jpg" alt="Resume 6">
+    <img class="w-[300px] h-[400px]" src="assets/resumes/5195259.jpg" alt="Resume 7">
+    <img class="w-[300px] h-[400px]" src="assets/resumes/9864951.jpg" alt="Resume 8">
+    <img class="w-[300px] h-[400px]" src="assets/resumes/CV-Template-03.jpg" alt="Resume 9">
+    <img class="w-[300px] h-[400px]" src="assets/resumes/CV-Template-13.jpg" alt="Resume 10">
+    <img class="w-[300px] h-[400px]" src="assets/resumes/cv_template_07.jpg" alt="Resume 11">
+    <img class="w-[300px] h-[400px]" src="assets/resumes/tp188-385-mind-resume-01.jpg" alt="Resume 12">
+                     <!-- Duplicate the same set of images for seamless scrolling -->
+    <img class="w-[300px] h-[400px]" src="assets/resumes/10401521.jpg" alt="Resume 1">
+    <img class="w-[300px] h-[400px]" src="assets/resumes/10737664.jpg" alt="Resume 2">
+    <img class="w-[300px] h-[400px]" src="assets/resumes/11420130.jpg" alt="Resume 3">
+    <img class="w-[300px] h-[400px]" src="assets/resumes/3949885.jpg" alt="Resume 4">
+    <img class="w-[300px] h-[400px]" src="assets/resumes/5192108.jpg" alt="Resume 5">
+    <img class="w-[300px] h-[400px]" src="assets/resumes/4347003.jpg" alt="Resume 6">
+    <img class="w-[300px] h-[400px]" src="assets/resumes/5195259.jpg" alt="Resume 7">
+    <img class="w-[300px] h-[400px]" src="assets/resumes/9864951.jpg" alt="Resume 8">
+    <img class="w-[300px] h-[400px]" src="assets/resumes/CV-Template-03.jpg" alt="Resume 9">
+    <img class="w-[300px] h-[400px]" src="assets/resumes/CV-Template-13.jpg" alt="Resume 10">
+    <img class="w-[300px] h-[400px]" src="assets/resumes/cv_template_07.jpg" alt="Resume 11">
+    <img class="w-[300px] h-[400px]" src="assets/resumes/tp188-385-mind-resume-01.jpg" alt="Resume 12">
+                     <!-- Duplicate the same set of images for seamless scrolling -->
+    <img class="w-[300px] h-[400px]" src="assets/resumes/10401521.jpg" alt="Resume 1">
+    <img class="w-[300px] h-[400px]" src="assets/resumes/10737664.jpg" alt="Resume 2">
+    <img class="w-[300px] h-[400px]" src="assets/resumes/11420130.jpg" alt="Resume 3">
+    <img class="w-[300px] h-[400px]" src="assets/resumes/3949885.jpg" alt="Resume 4">
+    <img class="w-[300px] h-[400px]" src="assets/resumes/5192108.jpg" alt="Resume 5">
+    <img class="w-[300px] h-[400px]" src="assets/resumes/4347003.jpg" alt="Resume 6">
+    <img class="w-[300px] h-[400px]" src="assets/resumes/5195259.jpg" alt="Resume 7">
+    <img class="w-[300px] h-[400px]" src="assets/resumes/9864951.jpg" alt="Resume 8">
+    <img class="w-[300px] h-[400px]" src="assets/resumes/CV-Template-03.jpg" alt="Resume 9">
+    <img class="w-[300px] h-[400px]" src="assets/resumes/CV-Template-13.jpg" alt="Resume 10">
+    <img class="w-[300px] h-[400px]" src="assets/resumes/cv_template_07.jpg" alt="Resume 11">
+    <img class="w-[300px] h-[400px]" src="assets/resumes/tp188-385-mind-resume-01.jpg" alt="Resume 12">
+
+    </div>
+  
+                   </div>
+
+              </div>
+            </div>
+
+
+            <div class="thanks-cont flex justify-center items-center gap-[50px] ">
+              <img class="w-[550px] h-[550px]" src="assets/PNG imgs/Resume-(1).jpg" alt="">
+              <div class="txt-cont flex flex-col justify-center gap-[20px]">
+              <span class="text-[55px] font-bold">Thank you</span><p class="text-[23px]"> for using our Resume Builder! We hope it helps you craft the perfect resume. Your feedback is always welcome!</p>
+              <button id="buildResumeBottom" class="nav-btn border bg-blue-400 text-white font-[Bitter]">
+                Build My Resume
+              </button>
+            </div>
+          </div>
+
+            
+             
+              
+    <footer id="footer" class="bg-black w-[100%]  flex flex-col gap-[25px] text-white shadow-lg ">
+     <div class="logo2 text-center  ">
+     <h1 class="text-[50px] font-bold">ResuMate</h1>
+     </div>
+
+     <div class="Links cursor-pointer">
+      <ul class="flex justify-center gap-[15px]">
+        <li class=" l1 hover:underline">Resume Templates</li>
+        <li>|</li>
+        <li class="l2 hover:underline">FAQs</li>
+        <li>|</li>
+        <li class="l3 hover:underline">Create my resume</li>
+      </ul>
+     </div>
+     <div class="links flex justify-center items-center gap-[20px] ">
+      <img class="cursor-pointer" src="assets/SVGs/linkedin.svg" alt="">
+      <img class="cursor-pointer" src="assets/SVGs/facebook.svg" alt="">
+      <img class="cursor-pointer" src="assets/SVGs/instagram.svg" alt="">
+     </div>
+    </footer>
+    
+  </body>
+   <script>
+    
+
+let currentImage = 1;
+const totalImages = 6;
+
+setInterval(() => {
+    document.getElementById(`image${currentImage}`).classList.add('hidden');
+    currentImage = (currentImage % totalImages) + 1;
+    document.getElementById(`image${currentImage}`).classList.remove('hidden');
+}, 3000);
+
+
+//                                                  FAQ Segment                                                              //
+let faq=document.querySelector(".faq");
+
+faq.addEventListener("click",()=>{
+    window.location.href="/faq";
+})
+
+let resumeBuild=document.getElementById("build_resume");
+resumeBuild.addEventListener("click",()=>{
+    window.location.href="templateSection.html";
+})
+
+//                                                 FAQ Segment                                                              //
+
+
+
+let l1=document.querySelector(".l1");
+l1.addEventListener("click",()=>{
+    window.location.href="templateSection.html";
+})
+
+let l2=document.querySelector(".l2");
+l2.addEventListener("click",()=>{
+    window.location.href="/faq";
+})
+
+let l3=document.querySelector(".l3");
+l3.addEventListener("click",()=>{
+    window.location.href="templateSection.html";
+})
+
+document.getElementById("tryFreeBtn").addEventListener("click", () => {
+  window.location.href = "templateSection.html";
+});
+
+document.getElementById("buildResumeBottom").addEventListener("click", () => {
+  window.location.href = "templateSection.html";
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+   </script>
+</html>
+

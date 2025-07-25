@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Resume</title>
+    <link rel="stylesheet" href="output.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Bitter:ital,wght@0,100..900;1,100..900&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=Oswald:wght@200..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto+Slab:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+<!-- <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script> -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+<style>
+    body{
+        font-family:"Nunito Sans", sans-serif;
+    }
+  @media print {
+    .no-print, button {
+      display: none !important;
+    }
+  }
+
+  
+</style>
+<!-- 
+<body class="flex   " >
+
+    <div class="formCont w-[50vw] border-4 border-black min-h-[100vh] flex flex-col  relative"> -->
+
+        <body class="flex flex-col items-center bg-[#f8f9fc]">
+  
+            <!-- Toolbar with toggle -->
+            <div class="w-full flex justify-between p-4 bg-white shadow">
+              <h1 class="text-5xl font-extrabold">Resu<span class="text-orange-400">Mate</span></h1>
+              <button type="submit" id="toggleViewBtn" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                Preview Resume
+              </button>
+            </div>
+          
+            <!-- Form Container (Editor) -->
+            <div id="formView" class="formCont w-[90%] max-w-[1200px] border-2 border-gray-300 mt-5 p-5 rounded-lg bg-white overflow-y-auto">
+              <!-- ⚠️ Keep all your existing form code here exactly as-is -->
+              <form id="resumeForm" action="/submit" method="POST" enctype="multipart/form-data">
+
+                <!-- Add this inside your <form> tag -->
+<input type="hidden" name="template" id="templateInput">
+        
+                <div class="formHeader m mt-[50px] text-[27px] flex justify-center items-center">
+                    <input class="text-center font-bold" type="text" class="formInput" placeholder="Untitled">
+                </div>
+        
+                <div class="divide w-[90%] mx-auto bg-gray-200 h-[2px] m my-8"></div>
+        
+                <div class="personalDetails m m-[15px]  ">
+                    <span class="text-[23px] font-bold">Personal details</span>
+
+                    <div class="mb-6">
+                        <label for="image" class="block text-gray-700 font-semibold mb-2">Upload Profile Image</label>
+                        <input type="file" name="image" id="image" accept="image/*"
+                          class="block w-full text-sm text-gray-600 border rounded px-4 py-2 file:mr-4 file:py-2 file:px-4 file:border-0 file:text-sm file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
+                      </div>
+                      
+                   
+                       
+                        <div class="grid grid-cols-2 gap-4 m mt-[20px]">
+                            <div class="flex flex-col gap-[5px]">
+                                <label for="firstname" class="" >First Name</label>
+                                <input type="text" name="fname" id="firstname" class="border border-none p-3   bg-[#eff2f9]" required pattern="[A-Za-z\s]{2,}" title="Enter a valid first name (at least 2 letters)">
+                            </div>
+        
+                                <div class="flex flex-col gap-[5px]">
+                                    <label for="firstname"  >Last Name</label>
+                                    <input type="text" name="lname" class="border border-none p-3   bg-[#eff2f9]" id="lastname" required pattern="[A-Za-z\s]{2,}" title="Enter a valid last name (at least 2 letters)">
+
+                                </div>
+        
+                        </div>
+        
+        
+                        <div class="grid grid-cols-3 gap-4 m mt-[20px]">
+                            <div class="flex flex-col gap-[5px]">
+                                <label for="city"  >City</label>
+                                <input type="text" name="perscity" class="border border-none p-3   bg-[#eff2f9]" id="city" required pattern="[A-Za-z\s]{2,}" title="Enter a valid city name">
+                            </div>
+        
+                                <div class="flex flex-col gap-[5px]">
+                                    <label for="country"  >Country</label>
+                                    <input type="text" name="perscountry" class="border border-none p-3   bg-[#eff2f9]" id="country" required pattern="[A-Za-z\s]{2,}" title="Enter a valid country name">
+                                </div>
+        
+                                <div class="flex flex-col gap-[5px]">
+                                    <label for="pincode"  >Pincode</label>
+                                    <input type="text" name="pincode" id="pers-pincode" class="border border-none  p-3 bg-[#eff2f9]" placeholder="Pincode" pattern="[0-9]{6}" required title="Enter a valid 6-digit pincode">
+
+                                </div>
+        
+                        </div>
+        
+                        <div class="grid grid-cols-2 gap-4 m mt-[20px]">
+                            <div class="flex flex-col gap-[5px]">
+                                <label for="phone"  >Phone No</label>
+                                <input type="tel" name="phoneno" id="persphone" class="border border-none  p-3 bg-[#eff2f9]" placeholder="Phone No" pattern="[0-9]{10}" required title="Enter a 10-digit phone number">
+
+                            </div>
+        
+                                <div class="flex flex-col gap-[5px]">
+                                    <label for="email"  >Email</label>
+                                    <input type="email" name="email" id="persemail" class="border border-none  p-3 bg-[#eff2f9] " placeholder="Email" >
+                                </div>
+        
+                               
+        </div>
+                        </div>
+                        
+        
+                        <div class="divide w-[90%] mx-auto bg-gray-200 h-[2px] m my-8"></div>
+        
+        
+                        <div class="summary m mt-[30px] mx-[15px]">
+                            <span class="text-[23px] font-bold">Professional Summary</span>
+                            <p class="text-[#6a6a6a]">Keep it concise, highlight your key skills, and showcase your strengths in a way that makes you stand out.</p>
+        
+                            <div class="summaryCont m mt-[10px] border-none w-full min-h-[300px]   ">
+                                <div class="summContHead flex justify-between gap-[10px]  p-[15px]">
+                                    <div class="svgs flex gap-[10px] items-center">
+                                    <img class=" bold-btn cursor-pointer hover:invert-[0.5] " src="assets/SVGs/bold.svg" alt="">
+                                    <img class="italic-btn cursor-pointer hover:invert-[0.5]" src="assets/SVGs/italic.svg" alt="">
+                                    <img class="underline-btn cursor-pointer hover:invert-[0.5]" src="assets/SVGs/underline.svg" alt="">
+                                    <img class="undo-btn cursor-pointer hover:invert-[0.5] w-[21px]" src="assets/SVGs/undo-svgrepo-com.svg" alt="">
+                                    <img class="redo-btn cursor-pointer hover:invert-[0.5]" src="assets/SVGs/redo.svg" alt="">
+                                    <button type="button" onclick="enhanceSummaryWithAI()" class="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600 mt-2">
+  Enhance with AI
+</button>
+
+                                   
+                                </div>
+                                
+        
+                               
+                                    
+                                    
+                                </div>
+        
+                            
+                                <div id="summaryEditor" contenteditable="true"
+     class="w-full min-h-[200px] p-3 bg-white rounded border border-gray-300 focus:outline-none">
+</div>
+<input type="hidden" name="summary" id="summaryInput"> <!-- Hidden field for form -->
+
+        
+                                
+                                
+        
+                            </div>
+                            <p class="text-[#6a6a6a] m-[10px] text-[14px]">Recruiter tip: Write 400-600 characters to increase interview chances</p>
+        
+        
+                        </div>
+        
+                        <div class="divide w-[90%] mx-auto bg-gray-200 h-[2px] m my-8"></div>
+        
+        
+                        <div class="skills m mt-[30px] mx-[15px]">
+                            <span class="text-[23px] font-bold">Skills</span>
+                            <p class="text-[#6a6a6a]">Choose skills relevant to your job role. Highlight key strengths to match job requirements and increase your chances of selection.</p>
+        
+        
+                            <div class="skillsCont m mt-[10px] border-none w-[70%] min-h-[50px]   ">
+        
+                                  <!-- ✅ Hidden input added here -->
+                <input type="hidden" name="skills" id="skillsHiddenInput">
+                               
+        
+                                  <!-- Skill List -->
+        
+                 <!-- Skill List -->
+            <div id="skillList" class="flex flex-wrap gap-[10px]  ">
+                <!-- Skills will be added here dynamically -->
+            </div>
+        
+            <!-- Input & Button -->
+            <div class="mt-3 flex gap-[15px] ">
+                <input id="skillInput" type="text"  class="border p-2 w-full rounded-md m ml-[80px]" placeholder="Enter a skill"> <!-- ✅ remove name="skills" -->
+               
+                <button type="button" onclick="addSkill()" class="bg-blue-500 font-bold w-[70px]  text-white px-3 py-[7px] rounded-md cursor-pointer  hover:bg-blue-600">Add</button>
+            </div>
+        
+        
+        
+                             
+        
+                            </div>
+        
+                            
+                        </div>
+        
+                        <div class="divide w-[90%] mx-auto bg-gray-200 h-[2px] m my-8"></div>
+        
+                        <div class="experience m mt-[15px] mx-[25px]  ">
+                            <span class="text-[23px] font-bold">Experience</span>
+                            <p class="text-[#6a6a6a]"> Highlight key achievements, responsibilities, and skills gained in each role to showcase your impact and expertise effectively to employers.</p>
+                               
+        
+                            <div id="experienceContainer">
+        
+                                <div class="experience-entry">
+        
+                                <div class="grid grid-cols-2 gap-4 m mt-[20px]">
+                                    <div class="flex flex-col gap-[5px]">
+                                        <label for="jobtitle" class="" >Job Title</label>
+                                        <input type="text" name="jobtitle[]" id="jobtitle" class="border border-none p-3   bg-[#eff2f9]" placeholder="Marketing"  >
+                                    </div>
+                
+                                        <div class="flex flex-col gap-[5px]">
+                                            <label for="employer"  >Employer</label>
+                                            <input type="text" name="employer[]" id="employer" class="border border-none  p-3 bg-[#eff2f9]" placeholder="Zara"  >
+                                        </div>
+                
+                                </div>
+                
+                
+                                <div class="grid grid-cols-2 gap-4 m mt-[20px]">
+                                    <div class="flex flex-col gap-[5px]">
+                                        <label for="city"  >City</label>
+                                        <input type="text" name="expcity[]" id="expcity" class="border border-none p-3   bg-[#eff2f9]" placeholder="New Delhi" >
+                                    </div>
+                
+                                       
+                
+                                        <div class="flex flex-col gap-[5px]">
+                                            <label for="pincode"  >Country</label>
+                                            <input type="text" name="expcountry[]" id="country" class="border border-none  p-3 bg-[#eff2f9] " placeholder="India" >
+                                        </div>
+                
+                                </div>
+                
+                                <div class="grid grid-cols-2 gap-4 m mt-[20px]">
+                                    <div class="flex flex-col gap-[5px]">
+                                        <label for="phone"  >Start Date</label>
+                                        <input type="date" name="startdate[]" id="expstartdate" class="border border-none p-3  w-[300px] bg-[#eff2f9]" placeholder="Select Date" >
+                                    </div>
+                
+                                        <div class="flex flex-col gap-[5px]">
+                                            <label for="email"  >End Date</label>
+                                            <input type="date" name="enddate[]" id="expenddate" class="border border-none  p-3 bg-[#eff2f9] w-[300px]" placeholder="Select Date" >
+                                        </div>
+                
+                                       
+                </div>
+        
+                </div>
+                </div>
+        
+                
+                                </div>
+                 <button type="button" onclick="addExperience()" class="text-blue-400 hover:text-blue-500 font-bold ml-10" >+ Add more experience</button>
+                
+        
+        
+        
+                                <div class="divide w-[90%] mx-auto bg-gray-200 h-[2px] m my-8"></div>
+        
+                                <div class="education m mt-[15px] mx-[25px]  ">
+                                    <span class="text-[23px] font-bold">Education</span>
+                                    <p class="text-[#6a6a6a]">List your degrees, certifications, and relevant coursework to showcase your academic background and qualifications for potential employers or clients.</p>
+        
+                                    <div id="educationContainer">
+        
+                                        <div class="education-entry">
+                                    
+                                       
+                                        <div class="grid grid-cols-2 gap-4 m mt-[20px]">
+                                            <div class="flex flex-col gap-[5px]">
+                                                <label for="schoolname" class="" >School Name</label>
+                                                <input type="text" name="schoolname[]" id="schoolname" class="border border-none p-3   bg-[#eff2f9]" placeholder="DPGITM" required >
+                                            </div>
+                        
+                                                <div class="flex flex-col gap-[5px]">
+                                                    <label for="schoollocation"  >School Location</label>
+                                                    <input type="text" name="schoollocation[]" id="schoollocation" class="border border-none  p-3 bg-[#eff2f9]" placeholder="Gurugram" required >
+                                                </div>
+                        
+                                        </div>
+                        
+                        
+                                        <div class="grid grid-cols-2  gap-4 m mt-[20px] ">
+                                            
+                                            <div class="flex flex-col gap-[5px]">
+                                            <label for="degree" class="" >Degree</label>
+                                            <input type="text" name="degree[]" id="degree" class="border border-none p-3  bg-[#eff2f9]" placeholder="Enter your degree" required>
+                                            </div>
+        
+                                            <div class="grid grid-cols-2 gap-2.5 ">
+        
+                                                <div class="flex flex-col gap-[5px]">
+                                                <label for="startdate" class="" >Start Date</label>
+                                            <input type="date" name="edustartdate[]" id="edu-startdate" class="border border-none p-3  bg-[#eff2f9]" required >
+                                            </div>
+                                                       
+                                            <div class="flex flex-col gap-[5px]">
+                                                <label for="enddate" class="" >End Date</label>
+                                            <input type="date" name="eduenddate[]" id="edu-enddate" class="border border-none p-3  bg-[#eff2f9]" required >
+                                            </div>
+        
+                                            </div>
+        
+                                           
+                                  
+        
+                                            
+                                        </div>
+        
+                                        <div class="summaryCont m mt-[10px] border-none w-full min-h-[300px]   ">
+                                            <div class="summContHead flex justify-between gap-[10px]  p-[15px]">
+                                                <div class="svgs flex gap-[10px] items-center">
+                                                <img class="bold-btn cursor-pointer hover:invert-[0.5] " src="assets/SVGs/bold.svg" alt="">
+                                                <img class="italic-btn cursor-pointer hover:invert-[0.5]" src="assets/SVGs/italic.svg" alt="">
+                                                <img class="underline-btn cursor-pointer hover:invert-[0.5]" src="assets/SVGs/underline.svg" alt="">
+                                                <img class="undo-btn cursor-pointer hover:invert-[0.5] w-[21px]" src="assets/SVGs/undo-svgrepo-com.svg" alt="">
+                                                <img class="redo-btn cursor-pointer hover:invert-[0.5]" src="assets/SVGs/redo.svg" alt="">
+                                                                                    <button type="button" onclick="enhanceSummaryWithAI()" class="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600 mt-2">
+  Enhance with AI
+</button>
+                                            </div>
+                                    
+                    
+                                           
+                                                
+                                                
+                                            </div>
+                    
+                                            <div id="edusummaryEditor" contenteditable="true"
+                                            class="w-full min-h-[200px] p-3 border border-gray-300 rounded bg-white"></div>
+                                       <input type="hidden" name="edusummary" id="edusummary">
+                                       
+                                            </div>
+                                            </div>
+                                            </div>
+        
+                        
+                                               
+                                        </div>
+        
+                                        <button type="button" onclick="addEducation()" class="text-blue-400 hover:text-blue-500 font-bold ml-10 mt-5 " >+ Add Education </button>
+        
+        
+                                        <div class="divide w-[90%] mx-auto bg-gray-200 h-[2px] m my-8"></div>
+        
+                                        
+        
+        
+                                      
+                                <div id="coursesSection" class="courses m mt-[15px] mx-[25px] hidden ">
+                                    <span class="text-[23px] font-bold">Course</span>
+                                    <p class="text-[#6a6a6a]">List the technical courses you’ve completed that are relevant to your resume.</p>
+                                   
+                                       
+                                        <div class="grid grid-cols-2 gap-4 m mt-[20px]">
+                                            <div class="flex flex-col gap-[5px]">
+                                                <label for="course" class="" >Courses</label>
+                                                <input type="text" name="coursename" id="course" class="border border-none p-3   bg-[#eff2f9]" placeholder="B.Tech" >
+                                            </div>
+                        
+                                                <div class="flex flex-col gap-[5px]">
+                                                    <label for="institution"  >Institution</label>
+                                                    <input type="text" name="courseinstitution" id="institution" class="border border-none  p-3 bg-[#eff2f9]" placeholder="DPGITM"  >
+                                                </div>
+                        
+                                        </div>
+                        
+                        
+                                        <div class="grid grid-cols-2  gap-4 m mt-[20px] ">
+                                            
+                                            <div class="flex flex-col gap-[5px]">
+                                            <label for="date" class="" >Start Date</label>
+                                            <input type="date" name="coursestartdate" id="startdate" class="border border-none p-3  bg-[#eff2f9]" placeholder=""  >
+                                            </div>
+        
+                                            <div class="flex flex-col gap-[5px]">
+                                            <label for="date" class="" >End Date</label>
+                                            <input type="date" name="courseenddate" id="enddate" class="border border-none p-3   bg-[#eff2f9]" placeholder=""  >
+                                            </div>
+        
+                                           
+                                  
+        
+                                            
+                                        </div>
+                          
+                                        <div class="divide w-[90%] mx-auto bg-gray-200 h-[2px] m my-8"></div>
+                                               
+                                        </div>
+        
+        
+                                <div id="internshipsSection" class="courses m mt-[15px] mx-[25px] hidden">
+                                    <span class="text-[23px] font-bold">Internships</span>
+                                    <p class="text-[#6a6a6a]">Highlight specific technologies, tools, or achievements during your internship to make it stand out to recruiters.</p>
+                                   
+                                       
+                                        <div class="grid grid-cols-2 gap-4 m mt-[20px]">
+                                            <div class="flex flex-col gap-[5px]">
+                                                <label for="job" class="" >Job Title</label>
+                                                <input type="text" name="internjobtitle" id="job" class="border border-none p-3   bg-[#eff2f9]" placeholder="" >
+                                            </div>
+                        
+                                                <div class="flex flex-col gap-[5px]">
+                                                    <label for="recruiter"  >Recruiter</label>
+                                                    <input type="text" name="internrecruiter" id="recruiter" class="border border-none  p-3 bg-[#eff2f9]" placeholder="" >
+                                                </div>
+                        
+                                        </div>
+                        
+                        
+                                        <div class="grid grid-cols-2  gap-4 m mt-[20px] ">
+                                            
+                                            <div class="flex flex-col gap-[5px]">
+                                            <label for="date" class="" >Start Date</label>
+                                            <input type="date" name="internstartdate" id="startdate" class="border border-none p-3  bg-[#eff2f9]" placeholder="" >
+                                            </div>
+        
+                                            <div class="flex flex-col gap-[5px]">
+                                            <label for="date" class="" >End Date</label>
+                                            <input type="date" name="internenddate" id="enddate" class="border border-none p-3   bg-[#eff2f9]" placeholder="" >
+                                            </div>
+        
+                                           
+                                  
+        
+                                            
+                                        </div>
+        
+                                        <div class="grid grid-cols-2  m mt-[20px] ">
+                                            
+                                            <div class="flex flex-col gap-[5px]">
+                                            <label for="city" class="" >City</label>
+                                            <input type="city" id="city" class="border border-none p-3  bg-[#eff2f9]" placeholder="" >
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="flex flex-col m mt-[10px]">Description
+        
+                                        <div class="summaryCont m mt-[10px] border-none w-full min-h-[300px]   ">
+                                            <div class="summContHead flex justify-between gap-[10px]  p-[15px]">
+                                                <div class="svgs flex gap-[10px] items-center">
+                                                <img class="bold-btn cursor-pointer hover:invert-[0.5] " src="assets/SVGs/bold.svg" alt="">
+                                                <img class="italic-btn cursor-pointer hover:invert-[0.5]" src="assets/SVGs/italic.svg" alt="">
+                                                <img class="underline-btn cursor-pointer hover:invert-[0.5]" src="assets/SVGs/underline.svg" alt="">
+                                                <img class="undo-btn cursor-pointer hover:invert-[0.5] w-[21px]" src="assets/SVGs/undo-svgrepo-com.svg" alt="">
+                                                <img class="redo-btn cursor-pointer hover:invert-[0.5]" src="assets/SVGs/redo.svg" alt="">
+                                                                                    <button type="button" onclick="enhanceSummaryWithAI()" class="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600 mt-2">
+  Enhance with AI
+</button>
+                                            </div>
+                                          
+                    
+                                           
+                                                
+                                                
+                                            </div>
+                    
+                                            <div id="internshipsummaryEditor" contenteditable="true"
+                                            class="w-full min-h-[200px] p-3 border border-gray-300 rounded bg-white"></div>
+                                       <input type="hidden" name="internshipsummary" id="internshipsummary" >
+                                            
+                    
+                                            
+                                            
+                    
+                                        </div>
+        
+        
+        
+                                        <div class="m mt-[8px]">Tip: write 200+ characters to increase recruitment chances</div>
+        
+        
+                                    </div>
+                          
+                                        <div class="divide w-[90%] mx-auto bg-gray-200 h-[2px] m my-8"></div>
+                                               
+                                        </div>
+        
+        
+                                        <div id="languagesSection" class="courses m mt-[15px] mx-[25px] ">
+                                            <span class="text-[23px] font-bold">Languages</span>
+        
+                                            <div id="languagesContainer">
+        
+                                            
+                                               <div class="language-entry">
+                                                <div class="grid grid-cols-2 gap-4 m mt-[20px]">
+                                                    <div class="flex flex-col gap-[5px]">
+                                                        <label for="language" class="" >Language</label>
+                                                        <input type="text" name="language[]" id="language" class="border border-none p-3   bg-[#eff2f9]" placeholder="" required >
+                                                    </div>
+                                
+                                                        <div class="flex flex-col gap-[5px]">
+                                                            <label for="dropdown"  >Level</label>
+                                                           
+                                                           <select class="bg-[#eff2f9] p-[12px]"  id="level" name="level[]" required>
+        
+                                                            <option value="option1">Select</option>
+                                                            <option value="Native Speaker">Native Speaker</option>
+                                                            <option value="Highly Proficient">Highly Proficient</option>
+                                                            <option value="Very good command">Very good command</option>
+                                                           </select>
+                                                        </div>
+        
+                                                        </div>
+                                                        </div>
+                                                       
+                
+                                                        </div>
+                                                        
+                                                        <button type="button" onclick="addLanguage()" class="text-blue-400 hover:text-blue-500 font-bold ml-10 mt-5 " >+ Add Language</button>
+        
+                                                        <div class="divide w-[90%] mx-auto bg-gray-200 h-[2px] m my-8"></div>
+                                
+                                                </div>
+        
+        
+        
+                                        <div id="hobbiesSection" class="courses m mt-[15px] mx-[25px] hidden ">
+                                            <span class="text-[23px] font-bold">Hobbies</span>
+                                           
+                                               
+                                                <div class="flex flex-col m mt-[10px]">
+                                                    <p class="text-[#6a6a6a]">Mention hobbies that reflect your personality, creativity, or skills relevant to teamwork, leadership, or problem-solving.</p>
+        
+                                                    <div class="summaryCont m mt-[10px] border-none w-full min-h-[150px]   ">
+                                                        <div class="summContHead flex justify-between gap-[10px]  p-[15px]">
+                                                            <div class="svgs flex gap-[10px] items-center">
+                                                            <img class="bold-btn cursor-pointer hover:invert-[0.5] " src="assets/SVGs/bold.svg" alt="">
+                                                            <img class="italic-btn cursor-pointer hover:invert-[0.5]" src="assets/SVGs/italic.svg" alt="">
+                                                            <img class="underline-btn cursor-pointer hover:invert-[0.5]" src="assets/SVGs/underline.svg" alt="">
+                                                            <img class="undo-btn cursor-pointer hover:invert-[0.5] w-[21px]" src="assets/SVGs/undo-svgrepo-com.svg" alt="">
+                                                            <img class="redo-btn cursor-pointer hover:invert-[0.5]" src="assets/SVGs/redo.svg" alt="">
+                                                            
+                                                        </div>
+        
+                                                        </div>
+                                
+                                                    
+                                                         <div id="hobbysummaryEditor" contenteditable="true"
+                                                        class="w-full min-h-[200px] p-3 border border-gray-300 rounded bg-white"></div>
+                                                   <input type="hidden" name="hobbysummary" id="hobbysummary" >
+                    
+                                                        
+                                
+                                                        
+                                                        
+                                
+                                                    </div>
+                    
+                    
+                    
+                                                    
+        
+                                                        </div>
+        
+                                
+                                                </div>
+        
+                                                  
+                                        <div class="submitbtn flex justify-center m mt-[70px] ">
+                                            <button type="submit" class="text-white bg-blue-400 font-medium p-2.5 w-[200px] rounded cursor-pointer hover:bg-blue-500 ">Generate Resume</button>
+                                        </div>
+        
+                                    </form>
+        
+              <!-- I’ll help you wrap it in this div with a few minimal layout changes only -->
+            </div>
+          
+            <!-- Preview Container -->
+            <div id="previewView" class="previewCont hidden w-[90%] max-w-[1200px] mt-5 p-5 rounded-lg bg-white">
+              <div class="flex justify-between items-center mb-4">
+                <div class="flex gap-3">
+                  <button id="templateSelect" class="bg-gray-200 px-4 py-2 rounded hover:bg-gray-300">Select Template</button>
+                </div>
+                <div class="flex gap-3">
+                  <button id="backToEditBtn" class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600">Edit Resume</button>
+                  <button id="downloadBtn" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Download PDF</button>
+                </div>
+              </div>
+          
+              <iframe id="previewFrame" class="w-full h-[1000px] border border-gray-300"></iframe>
+            </div>
+          
+          </body>
+
+
+                                <div class="add-section m mt-[15px] mx-[25px]  ">
+                                    <span class="text-[23px] font-bold">Add Section</span>
+                                    <p class="text-[#6a6a6a]">Add additional information like certifications, awards, publications, volunteer experience, or relevant projects to strengthen your resume and stand out.</p>
+                                    
+
+                                        <div class="grid grid-cols-2 grid-rows-3  gap-8 m mt-[20px] ">
+
+                                            <div id="coursesTrigger" class="courses flex gap-[7px] items-center cursor-pointer">
+                                                <img class="w-[40px]" src="assets/PNG imgs/courses.png" alt="">
+                                                <span class="course text-[18px] hover:text-[#1a91f0] ">Courses</span>
+                                            </div>
+
+                                            <div id="internshipTrigger" class="internships flex gap-[7px] items-center cursor-pointer">
+                                                <img class="w-[40px]" src="assets/PNG imgs/internship.png" alt="">
+                                                <span class="text-[18px] hover:text-[#1a91f0]">Internships</span>
+                                            </div>
+
+                                            <div id="hobbieTrigger" class="hobbies flex gap-[7px] items-center cursor-pointer">
+                                                <img class="w-[40px]" src="assets/PNG imgs/hobbies.png" alt="">
+                                                <span class="text-[18px] hover:text-[#1a91f0]">Hobbies</span>
+                                            </div>
+
+                                            
+                                        </div>
+                
+                                    </div>
+                                
+                
+                                       
+                </div>
+                
+
+               
+                
+                                
+        
+        
+
+
+
+            
+               
+
+
+
+
+
+
+
+                
+
+                
+
+
+               
+               
+
+            
+
+           
+                 
+
+
+        
+
+
+    </div>
+    <!-- <div class="previewCont bg-grey w-[50%] h-[100vh] bg-[#9d9db0] fixed left-[51%] flex flex-col items-center gap-[25px]">
+        <div class="header  z-50  p-[20px] text-white ">
+            <ul class="flex justify-center gap-[15px]">
+                <li class="flex gap-[10px] items-center cursor-pointer "><img class="w-[20px]" src="assets/SVGs/poll-h.svg" alt="">Select template</li>
+                <li class="text-[25px] font-extralight">|</li>
+                <li class="text-[30px] flex items-center gap-[15px] cursor-pointer" >- <img class="w-[25px]" src="assets/SVGs/letter-case.svg" alt="">+</li>
+                <li><button class="cursor-pointer bg-[#1a91f0] text-white text-[14px] p-[7px] w-[130px]  border-none rounded-md">Download PDF</button></li>
+                <li><button class="cursor-pointer bg-[#1a91f0] p-[7px] w-[40px] flex justify-center rounded-md"><img class="w-[20px]" src="assets/SVGs/menu-dots.svg" alt=""></button></li>
+            </ul>
+        </div>
+
+        <div class="resumePreview z-1000  w-[90%] h-[100%]  md:overflow-y-hidden border-0 ">
+            <iframe  id="previewFrame" class="w-full h-full object-cover"></iframe>
+        </div>
+    </div> -->
+
+    </body>
+
+
+    
+    <script>
+
+document.getElementById("resumeForm").addEventListener("submit", function (e) {
+    if (!this.checkValidity()) {
+      e.preventDefault(); // stop form
+      alert("Please fill out the form correctly.");
+    }
+  });
+        
+
+
+let allSkills = [];
+
+function addSkill() {
+    let skillInput = document.getElementById("skillInput");
+    let skillList = document.getElementById("skillList");
+    let skillsHiddenInput = document.getElementById("skillsHiddenInput");
+
+    if (skillInput.value.trim() !== "") {
+        allSkills.push(skillInput.value.trim());
+        skillsHiddenInput.value = allSkills.join(',');
+
+        // Create skill tag
+        let skillTag = document.createElement("div");
+        skillTag.className = "bg-blue-400 p-[7px] rounded-full flex items-center justify-between gap-2 text-white text-sm font-bold min-w-[100px]";
+
+        let skillText = document.createElement("span");
+        skillText.textContent = skillInput.value;
+
+        // Remove button
+        let removeBtn = document.createElement("button");
+        removeBtn.textContent = "✖";
+        removeBtn.className = "text-white text-xs font-bold cursor-pointer p pr-[5px]";
+        removeBtn.onclick = () => {
+            skillTag.remove();
+            allSkills = allSkills.filter(skill => skill !== skillText.textContent);
+            skillsHiddenInput.value = allSkills.join(',');
+        };
+
+        skillTag.appendChild(skillText);
+        skillTag.appendChild(removeBtn);
+        skillList.appendChild(skillTag);
+
+        skillInput.value = "";
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const selectedTemplate = localStorage.getItem('selectedTemplate');
+  if (selectedTemplate) {
+    // Add hidden input to form so it submits selected template
+    document.getElementById('templateInput').value = selectedTemplate;
+
+  } else {
+    alert("Please select a template before editing!");
+    window.location.href = "templateSection.html";
+  }
+});
+
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  const previewFrame = document.getElementById('previewFrame');
+  const selectedTemplate = localStorage.getItem('selectedTemplate');
+
+  if (selectedTemplate) {
+    previewFrame.src = `/preview?template=${selectedTemplate}`;
+    previewFrame.onload = () => {
+      if (previewFrame.contentDocument.body.innerHTML.includes("Error")) {
+        console.error("Failed to load template");
+      }
+    };
+
+    previewFrame.onerror = () => {
+      previewFrame.srcdoc = `
+        <div style="padding: 20px; color: red;">
+            Error: Failed to load template. Check:
+            <ul>
+                <li>Server is running</li>
+                <li>Template exists in views folder</li>
+                <li>Template name is correct</li>
+            </ul>
+            Current path: ${previewFrame.src}
+        </div>
+      `;
+    };
+  } else {
+    previewFrame.srcdoc = '<div style="padding: 20px;">Select a template first</div>';
+  }
+});
+
+
+document.addEventListener('DOMContentLoaded', function () {
+  const toggleMap = [
+    ['coursesTrigger', 'coursesSection'],
+    ['internshipTrigger', 'internshipsSection'],
+    ['languageTrigger', 'languagesSection'],
+    ['hobbieTrigger', 'hobbiesSection']
+  ];
+
+  toggleMap.forEach(([triggerId, sectionId]) => {
+    const trigger = document.getElementById(triggerId);
+    const section = document.getElementById(sectionId);
+    if (trigger && section) {
+      trigger.addEventListener('click', () => {
+        section.classList.toggle('hidden');
+      });
+    }
+  });
+});
+
+    function addExperience() {
+  const container = document.getElementById("experienceContainer");
+  const template = container.querySelector(".experience-entry");
+  const clone = template.cloneNode(true);
+
+  // Optional: clear input values
+  clone.querySelectorAll("input").forEach(input => input.value = "");
+
+  container.appendChild(clone);
+
+}
+
+function addLanguage() {
+  const container = document.getElementById("languagesContainer");
+  const template = container.querySelector(".language-entry");
+  const clone = template.cloneNode(true);
+  clone.querySelectorAll("input, select").forEach(el => el.value = "");
+  container.appendChild(clone);
+}
+
+function addEducation() {
+  const container = document.getElementById("educationContainer");
+  const template = container.querySelector(".education-entry");
+  const clone = template.cloneNode(true);
+  clone.querySelectorAll("input, textarea").forEach(el => el.value = "");
+  container.appendChild(clone);
+}
+
+
+
+document.getElementById("toggleViewBtn").addEventListener("click", () => {
+  document.getElementById("formView").classList.add("hidden");
+  document.getElementById("previewView").classList.remove("hidden");
+  document.getElementsByClassName("add-section")[0].classList.add("hidden");
+});
+
+document.getElementById("backToEditBtn").addEventListener("click", () => {
+  document.getElementById("formView").classList.remove("hidden");
+  document.getElementById("previewView").classList.add("hidden");
+  document.getElementsByClassName("add-section")[0].classList.remove("hidden");
+});
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const downloadBtn = document.getElementById("downloadBtn");
+  const previewFrame = document.getElementById("previewFrame");
+
+  if (downloadBtn && previewFrame) {
+    downloadBtn.addEventListener("click", () => {
+      if (previewFrame.contentWindow) {
+        previewFrame.contentWindow.focus();
+        previewFrame.contentWindow.print();
+      } else {
+        alert("Preview not loaded yet.");
+      }
+    });
+  }
+});
+document.getElementById("templateSelect").addEventListener("click", function () {
+  window.location.href = "templateSection.html";
+});
+
+
+
+  const summaryEditor = document.getElementById("summaryEditor");
+  const summaryInput = document.getElementById("summaryInput");
+
+  // Update hidden input before form submit
+  document.querySelectorAll(".bold-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    if (currentEditor) document.execCommand("bold");
+  });
+});
+
+document.querySelectorAll(".italic-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    if (currentEditor) document.execCommand("italic");
+  });
+});
+
+document.querySelectorAll(".underline-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    if (currentEditor) document.execCommand("underline");
+  });
+});
+
+document.querySelectorAll(".undo-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    if (currentEditor) document.execCommand("undo");
+  });
+});
+
+document.querySelectorAll(".redo-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    if (currentEditor) document.execCommand("redo");
+  });
+});
+
+
+  document.getElementById("resumeForm").addEventListener("submit", () => {
+  document.getElementById("summaryInput").value = document.getElementById("summaryEditor").innerHTML;
+  document.getElementById("edusummary").value = document.getElementById("edusummaryEditor").innerHTML;
+  document.getElementById("hobbysummary").value = document.getElementById("hobbysummaryEditor").innerHTML;
+  document.getElementById("internshipsummary").value = document.getElementById("internshipsummaryEditor").innerHTML;
+});
+
+
+document.querySelectorAll('[contenteditable="true"]').forEach(editor => {
+  editor.addEventListener('focus', () => {
+    currentEditor = editor;
+  });
+});
+
+
+function enhanceSummaryWithAI() {
+  const rawSummary = document.getElementById("summaryEditor").innerText;
+
+  fetch("/ai/enhance-summary", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ summary: rawSummary }),
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      document.getElementById("summaryEditor").innerText = data.enhanced;
+      alert("Summary enhanced!");
+    })
+    .catch((err) => alert("Failed to enhance: " + err));
+}
+
+
+
+
+
+
+
+
+
+    </script>
+    
+ 
+ 
+</html>
+
+
+
+
